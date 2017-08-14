@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     public string playerName;
     public Sprite playerImage;
 
+    private int currentHealth;
     private float currentSpeed;
     private Rigidbody rb;
     private Animator anim;
@@ -19,14 +20,17 @@ public class Player : MonoBehaviour {
     private bool isDead = false;
     private bool facingRight = true;
     private bool jump = false;
+    private UIManager uiManager;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         groundCheck = gameObject.transform.Find("GroundCheck");
         currentSpeed = maxSpeed;
-	}
+        currentHealth = maxHealth;
+        uiManager = FindObjectOfType<UIManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -99,5 +103,16 @@ public class Player : MonoBehaviour {
     void ResetSpeed()
     {
         currentSpeed = maxSpeed;
+    }
+
+    public void TookDamage(int damage)
+    {
+        if (!isDead)
+        {
+            currentHealth -= damage;
+            anim.SetTrigger("HitDamage");
+
+            uiManager.UpdateHealth(currentHealth);
+        }
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    public Slider healthUI;
+    public Image playerCurrentHealthbar;
     public Image playerImage;
     public Text playerName;
     public Text livesText;
 
     public GameObject enemyUI;
-    public Slider enemySlider;
+    public Image enemyCurrentHealthbar;
     public Text enemyName;
     public Image enemyImage;
 
@@ -23,8 +23,6 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = FindObjectOfType<Player>();
-        healthUI.maxValue = player.maxHealth;
-        healthUI.value = healthUI.maxValue;
         playerName.text = player.playerName;
         playerImage.sprite = player.playerImage;
     }
@@ -39,19 +37,32 @@ public class UIManager : MonoBehaviour {
         }
 	}
 
+    private void UpdateHealthbar(int maxHealth, int currentHealth, Image healthBar)
+    {
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
+
+        float ratio = (float)(currentHealth) / maxHealth;
+        healthBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+
+        Debug.Log(ratio + " | current: " + currentHealth + " | max: " + maxHealth);
+    }
+
     public void UpdateHealth(int amount)
     {
-        healthUI.value = amount;
+        UpdateHealthbar(player.maxHealth, amount, playerCurrentHealthbar);
     }
 
     public void UpdateEnemyUI(int maxHealth, int currentHealth, string name, Sprite image)
     {
-        enemySlider.maxValue = maxHealth;
-        enemySlider.value = currentHealth;
         enemyName.text = name;
         enemyImage.sprite = image;
 
         enemyTimer = 0;
         enemyUI.SetActive(true);
+
+        UpdateHealthbar(maxHealth, currentHealth, enemyCurrentHealthbar);
     }
 }
