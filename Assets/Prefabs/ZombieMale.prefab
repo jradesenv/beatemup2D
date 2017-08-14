@@ -162,7 +162,7 @@ MonoBehaviour:
   maxSpeed: 2
   minHeight: -10
   maxHeight: -2.5
-  minDistanceToPlayer: 0.8
+  minDistanceToPlayer: 0.6
   minTimeWalk: 1
   maxTimeWalk: 2
   damageTime: 0.5
@@ -191,10 +191,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7813659
+  m_Radius: 0.7685771
   m_Height: 4.484195
   m_Direction: 1
-  m_Center: {x: -0.23485005, y: -0.25289893, z: 0}
+  m_Center: {x: 0.1724881, y: -0.25289893, z: 0}
 --- !u!212 &212810476997817238
 SpriteRenderer:
   m_ObjectHideFlags: 1
