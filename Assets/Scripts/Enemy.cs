@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour {
     public int maxHealth;
     public float attackRate = 1f;
 
+    public string enemyName;
+    public Sprite enemyImage;
+
     private int currentHealth;
     private float currentSpeed;
     private Rigidbody rb;
@@ -29,6 +32,7 @@ public class Enemy : MonoBehaviour {
     private float damageTimer;
     private float nextAttack;
     private float currentWalkTime;
+    private UIManager uiManager;
 
     private Transform target;
 
@@ -40,7 +44,8 @@ public class Enemy : MonoBehaviour {
         target = FindObjectOfType<Player>().transform;
         currentHealth = maxHealth;
         currentSpeed = maxSpeed;
-	}
+        uiManager = FindObjectOfType<UIManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -130,6 +135,8 @@ public class Enemy : MonoBehaviour {
             damaged = true;
             currentHealth -= damage;
             anim.SetTrigger("HitDamage");
+
+            uiManager.UpdateEnemyUI(maxHealth, currentHealth, enemyName, enemyImage);
 
             if (currentHealth <= 0)
             {

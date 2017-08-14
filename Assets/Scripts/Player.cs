@@ -7,6 +7,9 @@ public class Player : MonoBehaviour {
     public float maxSpeed = 4;
     public float jumpForce = 400;
     public float minHeight, maxHeight;
+    public int maxHealth = 10;
+    public string playerName;
+    public Sprite playerImage;
 
     private float currentSpeed;
     private Rigidbody rb;

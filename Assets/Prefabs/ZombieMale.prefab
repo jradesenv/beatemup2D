@@ -168,6 +168,8 @@ MonoBehaviour:
   damageTime: 0.5
   maxHealth: 4
   attackRate: 1
+  enemyName: Zombizao
+  enemyImage: {fileID: 21300000, guid: c1b2ec19b0b9c664f9a703d6b6b98b98, type: 3}
 --- !u!114 &114866775070256124
 MonoBehaviour:
   m_ObjectHideFlags: 1
