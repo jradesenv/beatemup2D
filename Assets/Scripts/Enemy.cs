@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour {
             }
         }
 
-        rb.position = new Vector3(rb.position.x, rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 1, maxHeight - 1));
+        rb.position = new Vector3(rb.position.x, rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 0.01f, maxHeight - 0.01f));
     }
 
     void ZeroSpeed()

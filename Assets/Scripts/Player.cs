@@ -11,15 +11,15 @@ public class Player : MonoBehaviour {
     public string playerName;
     public Sprite playerImage;
 
-    private int currentHealth;
-    private float currentSpeed;
+    public int currentHealth;
+    public float currentSpeed;
     private Rigidbody rb;
     private Animator anim;
     private Transform groundCheck;
-    private bool onGround;
-    private bool isDead = false;
-    private bool facingRight = true;
-    private bool jump = false;
+    public bool onGround;
+    public bool isDead = false;
+    public bool facingRight = true;
+    public bool jump = false;
     private UIManager uiManager;
 
     // Use this for initialization
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour {
 
             float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
             float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 10)).x;
-            rb.position = new Vector3(Mathf.Clamp(rb.position.x, minWidth, maxWidth), rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 1, maxHeight - 1));
+            rb.position = new Vector3(Mathf.Clamp(rb.position.x, minWidth, maxWidth), rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 0.01f, maxHeight - 0.01f));
         }
     }
 
