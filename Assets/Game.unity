@@ -1287,6 +1287,31 @@ Prefab:
       value: 
       objectReference: {fileID: 21300004, guid: b4bd22f6656ea3b47806f8d9752baafd,
         type: 3}
+    - target: {fileID: 1184657596007502, guid: b75315eb2052283489a054011282ee14, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212810476997817238, guid: b75315eb2052283489a054011282ee14,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212810476997817238, guid: b75315eb2052283489a054011282ee14,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 11.433333
+      objectReference: {fileID: 0}
+    - target: {fileID: 212810476997817238, guid: b75315eb2052283489a054011282ee14,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 9.366667
+      objectReference: {fileID: 0}
+    - target: {fileID: 212810476997817238, guid: b75315eb2052283489a054011282ee14,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300008, guid: b4bd22f6656ea3b47806f8d9752baafd,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b75315eb2052283489a054011282ee14, type: 2}
   m_IsPrefabParent: 0
