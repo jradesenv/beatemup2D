@@ -116,6 +116,68 @@ public class Enemy : MonoBehaviour {
         }
 
         rb.position = new Vector3(rb.position.x, rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 0.01f, maxHeight - 0.01f));
+
+        adjustScale();
+    }
+
+    void adjustScale()
+    {
+        Vector3 scale = transform.localScale;
+        if (rb.position.z < -7)
+        {
+            scale.x = 0.290f;
+            scale.y = 0.290f;
+        }
+        else if (rb.position.z < -6.5)
+        {
+            scale.x = 0.285f;
+            scale.y = 0.285f;
+        }
+        else if (rb.position.z < -6)
+        {
+            scale.x = 0.280f;
+            scale.y = 0.280f;
+        }
+        else if (rb.position.z < -5.5)
+        {
+            scale.x = 0.275f;
+            scale.y = 0.275f;
+        }
+        else if (rb.position.z < -5)
+        {
+            scale.x = 0.270f;
+            scale.y = 0.270f;
+        }
+        else if (rb.position.z < -4.5)
+        {
+            scale.x = 0.265f;
+            scale.y = 0.265f;
+        }
+        else if (rb.position.z < -4)
+        {
+            scale.x = 0.260f;
+            scale.y = 0.260f;
+        }
+        else if (rb.position.z < -3.5)
+        {
+            scale.x = 0.255f;
+            scale.y = 0.255f;
+        }
+        else
+        {
+            scale.x = 0.250f;
+            scale.y = 0.250f;
+        }
+
+        scale.x += 0.1f;
+        scale.y += 0.1f;
+
+        //if (transform.localScale.x < 0)
+        //{
+        //    scale.x *= -1;
+        //}
+
+        transform.localScale = scale;
     }
 
     void ZeroSpeed()

@@ -34,7 +34,8 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        //onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        onGround = true;
 
         anim.SetBool("OnGround", onGround);
         anim.SetBool("Dead", isDead);
@@ -70,6 +71,10 @@ public class Player : MonoBehaviour {
                 anim.SetFloat("Speed", Mathf.Abs(rb.velocity.magnitude));
             }
 
+            float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
+            float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 10)).x;
+            rb.position = new Vector3(Mathf.Clamp(rb.position.x, minWidth, maxWidth), rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 0.01f, maxHeight - 0.01f));
+
             if ((h < 0 && facingRight) || (h > 0 && !facingRight))
             {
                 Flip();
@@ -81,10 +86,65 @@ public class Player : MonoBehaviour {
                 rb.AddForce(Vector3.up * jumpForce);
             }
 
-            float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
-            float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 10)).x;
-            rb.position = new Vector3(Mathf.Clamp(rb.position.x, minWidth, maxWidth), rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 0.01f, maxHeight - 0.01f));
+            adjustScale();
         }
+    }
+
+    void adjustScale()
+    {
+        Vector3 scale = transform.localScale;
+        if (rb.position.z < -7)
+        {
+            scale.x = 0.290f;
+            scale.y = 0.290f;
+        }
+        else if (rb.position.z < -6.5)
+        {
+            scale.x = 0.285f;
+            scale.y = 0.285f;
+        }
+        else if (rb.position.z < -6)
+        {
+            scale.x = 0.280f;
+            scale.y = 0.280f;
+        }
+        else if (rb.position.z < -5.5)
+        {
+            scale.x = 0.275f;
+            scale.y = 0.275f;
+        }
+        else if (rb.position.z < -5)
+        {
+            scale.x = 0.270f;
+            scale.y = 0.270f;
+        }
+        else if (rb.position.z < -4.5)
+        {
+            scale.x = 0.265f;
+            scale.y = 0.265f;
+        }
+        else if (rb.position.z < -4)
+        {
+            scale.x = 0.260f;
+            scale.y = 0.260f;
+        }
+        else if (rb.position.z < -3.5)
+        {
+            scale.x = 0.255f;
+            scale.y = 0.255f;
+        }
+        else
+        {
+            scale.x = 0.250f;
+            scale.y = 0.250f;
+        }
+
+        if (transform.localScale.x < 0)
+        {
+            scale.x *= -1;
+        }
+
+        transform.localScale = scale;
     }
 
     void Flip()
